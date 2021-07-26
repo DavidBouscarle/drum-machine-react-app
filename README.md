@@ -10,4 +10,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ````
 styled-components
 react-router-dom
+tone.js
 ````
