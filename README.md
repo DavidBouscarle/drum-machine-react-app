@@ -8,5 +8,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Library needed
 ````
-Styled-Components
+styled-components
+react-router-dom
 ````
