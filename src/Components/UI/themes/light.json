@@ -1,1 +1,6 @@
-{ "backgroundColor": "#EEEEEE", "mainColor": "#222831" }
+{
+    "backgroundColor": "#EEEEEE",
+    "mainColor": "#222831",
+    "borderRadius": "5px",
+    "transition": "all 250ms ease"
+}

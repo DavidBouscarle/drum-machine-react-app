@@ -4,7 +4,21 @@ const GlobalStyle = createGlobalStyle`
     body {
         background-color: ${(props) => props.theme.backgroundColor};
         color: ${(props) => props.theme.mainColor};
-        transition: all 250ms ease;
+        transition: ${(props) => props.theme.transition};
+    }
+
+    button {
+        padding: 1rem 2rem;
+        background-color: ${(props) => props.theme.backgroundColor};
+        color: ${(props) => props.theme.mainColor};
+        border: 1px solid;
+        border-radius: ${(props) => props.theme.borderRadius};
+        transition: ${(props) => props.theme.transition};
+    }
+
+    button:hover {
+        color: ${(props) => props.theme.backgroundColor};
+        background-color: ${(props) => props.theme.mainColor};
     }
 `;
 

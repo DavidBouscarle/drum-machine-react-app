@@ -24,9 +24,7 @@ const Layout = ({ children }) => {
                     isLight={isLight}
                     handleToggleTheme={handleToggleTheme}
                 />
-                <Main>
-                    {children}
-                </Main>
+                <Main>{children}</Main>
                 <Footer />
             </Wrapper>
         </ThemeProvider>
