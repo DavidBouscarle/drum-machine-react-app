@@ -37,6 +37,9 @@ const Main = styled.main`
     min-height: calc(100vh - 12rem);
     width: 90vw;
     margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 export default Layout;
