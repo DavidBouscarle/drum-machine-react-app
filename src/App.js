@@ -1,10 +1,12 @@
+import Layout from 'Components/UI/Layout'
+
 const App = () => {
   return (
-    <div className="App">
+    <Layout>
       <h1>
         Hey World !
       </h1>
-    </div>
+    </Layout>
   );
 }
 
