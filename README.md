@@ -5,3 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Install Node, NPM and install dependencies with -> ```` npm install ````
 
 ## Start your app with -> ```` npm start ````
+
+### Library needed
+````
+Styled-Components
+````
