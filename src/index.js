@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
+// Import CSS
+import './style/index/index_normalize.css';
+import './style/index/index_reset.css';
+import './style/index/index_typography.css';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
