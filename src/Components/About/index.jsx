@@ -8,7 +8,11 @@ const Index = () => {
                 <p>
                     This is a project demo coded by David Bouscarle; You can
                     find the source code on github on this following link :
-                    <a href="https://github.com/vikingsurfeur/drum-machine-react-app">
+                    <a
+                        href="https://github.com/vikingsurfeur/drum-machine-react-app"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
                         {" "}
                         Click here
                     </a>
@@ -39,7 +43,14 @@ const Index = () => {
                     </a>
                 </p>
                 <p>
-                    Sounds Credit : <a href="https://reverb.com/">Reverb.com</a>
+                    Sounds Credit :{" "}
+                    <a
+                        href="https://reverb.com/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        Reverb.com
+                    </a>
                 </p>
                 <h6>That's all folks!</h6>
             </section>
