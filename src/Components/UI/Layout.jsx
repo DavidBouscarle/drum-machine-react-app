@@ -20,12 +20,12 @@ const Layout = ({ children }) => {
         <ThemeProvider theme={isLight ? lightTheme : darkTheme}>
             <Wrapper>
                 <GlobalStyle />
-                <Header
+                <Header />
+                <Main>{children}</Main>
+                <Footer
                     isLight={isLight}
                     handleToggleTheme={handleToggleTheme}
                 />
-                <Main>{children}</Main>
-                <Footer />
             </Wrapper>
         </ThemeProvider>
     );
@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
 const Wrapper = styled.div``;
 
 const Main = styled.main`
-    min-height: calc(100vh - 12rem);
+    min-height: calc(100vh - 16rem);
     width: 90vw;
     margin: auto;
     display: flex;

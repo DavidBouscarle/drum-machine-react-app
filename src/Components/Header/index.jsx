@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import styled from "styled-components";
 
-const Index = ({ handleToggleTheme, isLight }) => {
+const Index = () => {
     const location = useLocation();
 
     return (
@@ -20,15 +20,12 @@ const Index = ({ handleToggleTheme, isLight }) => {
                     </MenuEl>
                 </Link>
             </nav>
-            <button onClick={handleToggleTheme}>
-                Switch Theme {isLight ? "Dark" : "Light"} Theme
-            </button>
         </Header>
     );
 };
 
 const Header = styled.header`
-    height: 6rem;
+    height: 8rem;
     padding: 0 4rem;
     display: flex;
     justify-content: space-between;

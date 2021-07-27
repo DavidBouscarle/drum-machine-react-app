@@ -29,7 +29,7 @@ const Button = styled.button`
     background: radial-gradient(
         circle,
         rgba(82, 63, 255, 1) 0%,
-        rgba(0, 0, 0, 1) 100%
+        rgba(0, 0, 0, 0.8) 100%
     );
     border: none;
     overflow: hidden;
@@ -46,7 +46,7 @@ const Button = styled.button`
         background: radial-gradient(
             circle,
             rgba(64, 255, 63, 1) 10%,
-            rgba(18, 18, 18, 1) 100%
+            rgba(18, 18, 18, 0.8) 100%
         );
         opacity: ${(props) => (props.isPlayed ? "1" : "0")};
         transition: ${(props) => props.theme.transition};
@@ -61,7 +61,7 @@ const Button = styled.button`
         background: radial-gradient(
             circle,
             rgba(64, 255, 63, 1) 30%,
-            rgba(18, 18, 18, 1) 100%
+            rgba(18, 18, 18, 0.8) 100%
         );
     }
 
@@ -73,6 +73,7 @@ const Button = styled.button`
         position: absolute;
         top: 1rem;
         right: 1rem;
+        font-size: 1.5rem;
     }
 `;
 

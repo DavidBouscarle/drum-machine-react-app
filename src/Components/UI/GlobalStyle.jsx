@@ -7,6 +7,10 @@ const GlobalStyle = createGlobalStyle`
         transition: ${(props) => props.theme.transition};
     }
 
+    header, footer {
+        box-shadow: ${(props) => props.theme.boxShadow};
+    }
+
     button {
         padding: 1rem 2rem;
         background-color: ${(props) => props.theme.backgroundColor};
