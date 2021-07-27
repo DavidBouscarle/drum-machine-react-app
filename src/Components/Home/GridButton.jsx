@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const GridButton = ({ isPlayed = false }) => {
-    return <Button isPlayed={isPlayed} />;
+const GridButton = ({ isPlayed = false, soundPlay }) => {
+    return <Button isPlayed={isPlayed} onClick={soundPlay} />;
 };
 
 const Button = styled.button`
@@ -12,6 +12,7 @@ const Button = styled.button`
         rgba(82, 63, 255, 1) 0%,
         rgba(0, 0, 0, 1) 100%
     );
+    border: none;
     overflow: hidden;
 
     &::before {
