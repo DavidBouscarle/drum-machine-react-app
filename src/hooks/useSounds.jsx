@@ -196,70 +196,127 @@ const useSounds = () => {
         }
     };
 
+    const handleAddSample = (note, file) => {
+        let fileURL = URL.createObjectURL(file);
+        let buffer = new Tone.Buffer(fileURL);
+
+        mySampler.current.add(note, buffer, () => {
+            alert("Sample Successfully Downloaded");
+        });
+    };
+
     const buttonsList = [
         {
             soundPlay: () => soundPlay("C4"),
             isPlayed: kick1IsPlayed,
+            id: "kick1",
+            handleAddSample: (event) =>
+                handleAddSample("C4", event.target.files[0]),
         },
         {
             soundPlay: () => soundPlay("C#4"),
             isPlayed: kick2IsPlayed,
+            id: "kick2",
+            handleAddSample: (event) =>
+                handleAddSample("C#4", event.target.files[0]),
         },
         {
             soundPlay: () => soundPlay("D4"),
             isPlayed: kick3IsPlayed,
+            id: "kick3",
+            handleAddSample: (event) =>
+                handleAddSample("D4", event.target.files[0]),
         },
         {
             soundPlay: () => soundPlay("D#4"),
             isPlayed: snare1IsPlayed,
+            id: "snare1",
+            handleAddSample: (event) =>
+                handleAddSample("D#4", event.target.files[0]),
         },
         {
             soundPlay: () => soundPlay("E4"),
             isPlayed: snare2IsPlayed,
+            id: "snare2",
+            handleAddSample: (event) =>
+                handleAddSample("E4", event.target.files[0]),
         },
         {
             soundPlay: () => soundPlay("F4"),
             isPlayed: hh1IsPlayed,
+            id: "hh1",
+            handleAddSample: (event) =>
+                handleAddSample("F4", event.target.files[0]),
         },
         {
             soundPlay: () => soundPlay("F#4"),
             isPlayed: hh2IsPlayed,
+            id: "hh2",
+            handleAddSample: (event) =>
+                handleAddSample("F#4", event.target.files[0]),
         },
         {
             soundPlay: () => soundPlay("G4"),
             isPlayed: hh3IsPlayed,
+            id: "hh3",
+            handleAddSample: (event) =>
+                handleAddSample("G4", event.target.files[0]),
         },
         {
             soundPlay: () => soundPlay("G#4"),
             isPlayed: crash1IsPlayed,
+            id: "crash1",
+            handleAddSample: (event) =>
+                handleAddSample("G#4", event.target.files[0]),
         },
         {
             soundPlay: () => soundPlay("A4"),
             isPlayed: crash2IsPlayed,
+            id: "crash2",
+            handleAddSample: (event) =>
+                handleAddSample("A4", event.target.files[0]),
         },
         {
             soundPlay: () => soundPlay("A#4"),
             isPlayed: ride1IsPlayed,
+            id: "ride1",
+            handleAddSample: (event) =>
+                handleAddSample("A#4", event.target.files[0]),
         },
         {
             soundPlay: () => soundPlay("B4"),
             isPlayed: ride2IsPlayed,
+            id: "ride2",
+            handleAddSample: (event) =>
+                handleAddSample("B4", event.target.files[0]),
         },
         {
             soundPlay: () => soundPlay("C5"),
             isPlayed: ride3IsPlayed,
+            id: "ride3",
+            handleAddSample: (event) =>
+                handleAddSample("C5", event.target.files[0]),
         },
         {
             soundPlay: () => soundPlay("C#5"),
             isPlayed: tom1IsPlayed,
+            id: "tom1",
+            handleAddSample: (event) =>
+                handleAddSample("C#5", event.target.files[0]),
         },
         {
             soundPlay: () => soundPlay("D5"),
             isPlayed: tom2IsPlayed,
+            id: "tom2",
+            handleAddSample: (event) =>
+                handleAddSample("D5", event.target.files[0]),
         },
         {
             soundPlay: () => soundPlay("D#5"),
             isPlayed: tom3IsPlayed,
+            id: "tom3",
+            handleAddSample: (event) =>
+                handleAddSample("D#5", event.target.files[0]),
         },
     ];
 

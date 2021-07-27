@@ -10,9 +10,17 @@ const Index = () => {
     return (
         <Wrapper>
             <Grid>
-                {buttonsList.map(({ soundPlay, isPlayed }, index) => (
-                    <GridButton key={index} soundPlay={soundPlay} isPlayed={isPlayed}/>
-                ))}
+                {buttonsList.map(
+                    ({ soundPlay, isPlayed, id, handleAddSample }, index) => (
+                        <GridButton
+                            key={index}
+                            soundPlay={soundPlay}
+                            isPlayed={isPlayed}
+                            id={id}
+                            handleAddSample={handleAddSample}
+                        />
+                    )
+                )}
             </Grid>
         </Wrapper>
     );

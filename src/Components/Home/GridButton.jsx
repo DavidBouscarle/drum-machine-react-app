@@ -1,7 +1,26 @@
 import styled from "styled-components";
 
-const GridButton = ({ isPlayed = false, soundPlay }) => {
-    return <Button isPlayed={isPlayed} onClick={soundPlay} />;
+const GridButton = ({ isPlayed = false, soundPlay, id, handleAddSample }) => {
+    return (
+        <Button isPlayed={isPlayed} onClick={soundPlay}>
+            <label
+                htmlFor={id}
+                onClick={(event) => {
+                    event.stopPropagation();
+                }}
+            >
+                🎵
+            </label>
+            <input
+                id={id}
+                type="file"
+                onClick={(event) => {
+                    event.stopPropagation();
+                }}
+                onChange={handleAddSample}
+            />
+        </Button>
+    );
 };
 
 const Button = styled.button`
@@ -26,10 +45,10 @@ const Button = styled.button`
         background: rgb(64, 255, 63);
         background: radial-gradient(
             circle,
-            rgba(64, 255, 63, 1) ${props => (props.isPlayed ? "0" : "10")}%,
+            rgba(64, 255, 63, 1) 10%,
             rgba(18, 18, 18, 1) 100%
         );
-        opacity: ${props => props.isPlayed ? "1" : "0"};
+        opacity: ${(props) => (props.isPlayed ? "1" : "0")};
         transition: ${(props) => props.theme.transition};
     }
 
@@ -44,6 +63,16 @@ const Button = styled.button`
             rgba(64, 255, 63, 1) 30%,
             rgba(18, 18, 18, 1) 100%
         );
+    }
+
+    & input {
+        display: none;
+    }
+
+    & label {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
     }
 `;
 
