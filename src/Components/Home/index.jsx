@@ -38,8 +38,8 @@ const Wrapper = styled.div`
 `;
 
 const Grid = styled.div`
-    width: 50rem;
-    height: 50rem;
+    width: 30rem;
+    height: 30em;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
@@ -49,6 +49,10 @@ const Grid = styled.div`
         ". . . ."
         ". . . ."
         ". . . .";
+    @media screen and (min-width: 768px) {
+        width: 60rem;
+        height: 60rem;
+    }
 `;
 
 export default Index;
