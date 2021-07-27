@@ -23,10 +23,10 @@ const Button = styled.button`
         right: 0;
         bottom: 0;
         z-index: 0;
-        background-color: rgb(82, 63, 255);
+        background: rgb(64, 255, 63);
         background: radial-gradient(
             circle,
-            rgba(82, 63, 255, 1) ${props => (props.isPlayed ? "0" : "10")}%,
+            rgba(64, 255, 63, 1) ${props => (props.isPlayed ? "0" : "10")}%,
             rgba(18, 18, 18, 1) 100%
         );
         opacity: ${props => props.isPlayed ? "1" : "0"};
@@ -41,7 +41,7 @@ const Button = styled.button`
         background: rgb(64, 255, 63);
         background: radial-gradient(
             circle,
-            rgba(64, 255, 63, 1) 10%,
+            rgba(64, 255, 63, 1) 30%,
             rgba(18, 18, 18, 1) 100%
         );
     }
