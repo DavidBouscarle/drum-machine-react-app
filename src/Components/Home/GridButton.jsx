@@ -33,6 +33,7 @@ const Button = styled.button`
     );
     border: none;
     overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 2px 8px;
 
     &::before {
         content: "";

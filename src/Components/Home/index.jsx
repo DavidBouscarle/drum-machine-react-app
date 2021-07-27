@@ -28,7 +28,12 @@ const Index = () => {
 
 const Wrapper = styled.div`
     padding: 2rem;
-    box-shadow: ${(props) => props.theme.boxShadowDrumKit};
+    box-shadow: 
+        rgba(20, 20, 20, 0.1) 0px 2px 1px, 
+        rgba(20, 20, 20, 0.1) 0px 4px 2px, 
+        rgba(20, 20, 20, 0.1) 0px 8px 4px, 
+        rgba(20, 20, 20, 0.1) 0px 16px 8px, 
+        rgba(20, 20, 20, 0.1) 0px 32px 16px;
     border-radius: ${(props) => props.theme.borderRadius};
 `;
 
