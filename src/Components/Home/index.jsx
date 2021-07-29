@@ -3,12 +3,14 @@ import styled from "styled-components";
 import useSounds from "../../hooks/useSounds";
 
 import GridButton from "./GridButton";
+import Player from "./Player";
 
 const Index = () => {
     const { buttonsList } = useSounds();
     
     return (
         <Wrapper>
+            <Player />
             <Grid>
                 {buttonsList.map(
                     ({ soundPlay, isPlayed, id, handleAddSample }, index) => (

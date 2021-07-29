@@ -39,23 +39,26 @@ const useSounds = () => {
     const [tom2IsPlayed, setTom2IsPlayed] = useState(false);
     const [tom3IsPlayed, setTom3IsPlayed] = useState(false);
 
+    const [recordedSound, setRecordedSound] = useState(null);
+    const [bufferSize, setBufferSize] = useState(null);
+
     useEffect(() => {
         const sampler = new Tone.Sampler({
-            "C4": kick1,
+            C4: kick1,
             "C#4": kick2,
-            "D4": kick3,
+            D4: kick3,
             "D#4": snare1,
-            "E4": snare2,
-            "F4": hh1,
+            E4: snare2,
+            F4: hh1,
             "F#4": hh2,
-            "G4": hh3,
+            G4: hh3,
             "G#4": crash1,
-            "A4": crash2,
+            A4: crash2,
             "A#4": ride1,
-            "B4": ride2,
-            "C5": ride3,
+            B4: ride2,
+            C5: ride3,
             "C#5": tom1,
-            "D5": tom2,
+            D5: tom2,
             "D#5": tom3,
         }).toDestination();
 
@@ -189,6 +192,79 @@ const useSounds = () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
     }, []);
+
+    useEffect(() => {
+        const recorder = new Tone.Recorder();
+        const recordButton = document.getElementById("record");
+        const playButton = document.getElementById("play");
+        const stopButton = document.getElementById("stop");
+        const recordLed = document.getElementById("recordLed");
+
+        const blinkRecordLed = () => {
+            recordLed.style.backgroundColor === "transparent"
+                ? (recordLed.style.backgroundColor = "crimson")
+                : (recordLed.style.backgroundColor = "transparent");
+        };
+
+        let blinkInterval;
+
+        const handleRecord = () => {
+            if (recorder.state === "stopped") {
+                mySampler.current.connect(recorder);
+                recorder.start();
+                blinkInterval = setInterval(blinkRecordLed, 250);
+            } else {
+                alert("Record is already started");
+            }
+        };
+
+        const handleStopRecord = async () => {
+            if (recorder.state === "started") {
+                const recording = await recorder.stop();
+                const blob = new Blob([recording], { type: "audio/wav" });
+                const url = URL.createObjectURL(blob);
+                const audio = document.createElement("audio");
+                audio.src = url;
+                setRecordedSound(audio);
+
+                clearInterval(blinkInterval);
+                recordLed.style.backgroundColor = "transparent";
+
+                try {
+                    const blobData = await fetch(url);
+                    const buffer = await blobData.arrayBuffer();
+                    const bufferLength = buffer.byteLength;
+                    bufferLength > 0
+                        ? setBufferSize(bufferLength)
+                        : alert("Your record track is Empty");
+                } catch (error) {
+                    console.error(`Something get Wrong: ${error}`);
+                }
+            } else {
+                alert("Recording is not started.");
+            }
+        };
+
+        const handlePlay = () => {
+            recordedSound && bufferSize > 0
+                ? recordedSound.play()
+                : alert("Please record a sound first.");
+        };
+
+        // Record
+        recordButton.addEventListener("click", handleRecord);
+        playButton.addEventListener("click", handlePlay);
+        stopButton.addEventListener("click", handleStopRecord);
+
+        return () => {
+            recordButton &&
+                recordButton.removeEventListener("click", handleRecord);
+            playButton && 
+                playButton.removeEventListener("click", handlePlay);
+            stopButton &&
+                stopButton.removeEventListener("click", handleStopRecord);
+        };
+    }, [recordedSound, bufferSize]);
 
     const soundPlay = (note) => {
         if (mySampler.current) {
