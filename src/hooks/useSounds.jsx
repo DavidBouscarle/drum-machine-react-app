@@ -41,6 +41,7 @@ const useSounds = () => {
 
     const [recordedSound, setRecordedSound] = useState(null);
     const [bufferSize, setBufferSize] = useState(null);
+    const [recordedSoundDuration, setRecordedSoundDuration] = useState(0);
 
     useEffect(() => {
         const sampler = new Tone.Sampler({
@@ -195,6 +196,7 @@ const useSounds = () => {
 
     useEffect(() => {
         const recorder = new Tone.Recorder();
+
         const recordButton = document.getElementById("record");
         const playButton = document.getElementById("play");
         const stopButton = document.getElementById("stop");
@@ -205,13 +207,13 @@ const useSounds = () => {
                 ? (recordLed.style.backgroundColor = "crimson")
                 : (recordLed.style.backgroundColor = "transparent");
         };
-
         let blinkInterval;
 
         const handleRecord = () => {
             if (recorder.state === "stopped") {
                 mySampler.current.connect(recorder);
                 recorder.start();
+                recordButton.classList.add("active");
                 blinkInterval = setInterval(blinkRecordLed, 250);
             } else {
                 alert("Record is already started");
@@ -230,10 +232,20 @@ const useSounds = () => {
                 clearInterval(blinkInterval);
                 recordLed.style.backgroundColor = "transparent";
 
+                recordButton.classList.remove("active");
+
                 try {
                     const blobData = await fetch(url);
                     const buffer = await blobData.arrayBuffer();
                     const bufferLength = buffer.byteLength;
+
+                    const duration =
+                        bufferLength / mySampler.current.context.sampleRate;
+                    setRecordedSoundDuration(
+                        duration *
+                            (mySampler.current.context.sampleRate / 10000)
+                    );
+
                     bufferLength > 0
                         ? setBufferSize(bufferLength)
                         : alert("Your record track is Empty");
@@ -246,12 +258,17 @@ const useSounds = () => {
         };
 
         const handlePlay = () => {
-            recordedSound && bufferSize > 0
-                ? recordedSound.play()
-                : alert("Please record a sound first.");
+            if (recordedSound && bufferSize > 0) {
+                recordedSound.play();
+                playButton.classList.add("active");
+                setTimeout(() => {
+                    playButton.classList.remove("active");
+                }, recordedSoundDuration * 1000);
+            } else {
+                alert("Please record a sound first.");
+            }
         };
 
-        // Record
         recordButton.addEventListener("click", handleRecord);
         playButton.addEventListener("click", handlePlay);
         stopButton.addEventListener("click", handleStopRecord);
@@ -264,7 +281,7 @@ const useSounds = () => {
             stopButton &&
                 stopButton.removeEventListener("click", handleStopRecord);
         };
-    }, [recordedSound, bufferSize]);
+    }, [recordedSound, bufferSize, recordedSoundDuration]);
 
     const soundPlay = (note) => {
         if (mySampler.current) {

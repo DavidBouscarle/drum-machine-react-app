@@ -24,6 +24,11 @@ const GlobalStyle = createGlobalStyle`
         color: ${(props) => props.theme.backgroundColor};
         background-color: ${(props) => props.theme.mainColor};
     }
+
+    .active {
+        color: ${(props) => props.theme.backgroundColor};
+        background-color: ${(props) => props.theme.mainColor};
+    }
 `;
 
 export default GlobalStyle;
