@@ -7,13 +7,12 @@ const Index = () => {
                 <h2>Hi There !</h2>
                 <p>
                     This is a project demo coded by David Bouscarle; You can
-                    find the source code on github on this following link :
+                    find the source code on github on this following link : {` `}
                     <a
                         href="https://github.com/vikingsurfeur/drum-machine-react-app"
                         target="_blank"
                         rel="noreferrer"
                     >
-                        {" "}
                         Click here
                     </a>
                 </p>
@@ -28,6 +27,14 @@ const Index = () => {
                         <p>You can also play the notes with your mouse...</p>
                     </li>
                     <li>
+                        <h5>You can record that's what you play !</h5>
+                        <p>
+                            Press the record button and the stop button when you
+                            finished
+                        </p>
+                        <p>And click play to enjoy your sound !</p>
+                    </li>
+                    <li>
                         <h5>Upload your Sound !</h5>
                         <p>
                             You can upload your own sound by clicking on the
@@ -36,9 +43,8 @@ const Index = () => {
                     </li>
                 </ul>
                 <p>
-                    Well... Sometimes... I take some photographs :{" "}
+                    Well... Sometimes... I take some photographs : {` `}
                     <a href="https://www.behance.net/davidbouscarle">
-                        {" "}
                         Click here
                     </a>
                 </p>
@@ -74,7 +80,25 @@ const Wrapper = styled.div`
         }
 
         p {
-            margin-bottom: 4rem;
+            margin-bottom: 2rem;
+            a {
+                position: relative;
+            }
+            a:before {
+                position: absolute;
+                content: "";
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                transform-origin: left;
+                transform: scale(0);
+                background: ${(props) => props.theme.mainColor};
+                transition: ${(props) => props.theme.transition};
+            }
+            a:hover:before {
+                transform: scale(1);
+            }
         }
 
         p:nth-child(5) {

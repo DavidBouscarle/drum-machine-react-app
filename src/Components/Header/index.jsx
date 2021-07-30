@@ -38,13 +38,26 @@ const Header = styled.header`
 
 const MenuEl = styled.p`
     display: inline-block;
-    padding: 0.2rem 0;
+    padding-bottom: 0.3rem;
     margin-left: 2rem;
+    position: relative;
     border-bottom: 1px solid ${props => props.isCurrentPage ? "" : "transparent"};
     transition: ${props => props.theme.transition};
 
-    &:hover {
-        border-bottom: 1px solid;
+    &:before {
+        position: absolute;
+        bottom: -0.1rem;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        transform-origin: left;
+        transform: scale(0);
+        background: ${(props) => props.theme.mainColor};
+        content: "";
+        transition: ${(props) => props.theme.transition};
+    }
+    &:hover:before {
+        transform: scale(1);
     }
 
     @media screen and (min-width: 768px) {
